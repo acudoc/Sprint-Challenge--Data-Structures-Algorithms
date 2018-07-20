@@ -4,11 +4,24 @@ class BinarySearchTree:
     self.left = None
     self.right = None
 
+
   def depth_first_for_each(self, cb):
-    pass    
+    visited, stack = set(), [cb]
+    while stack:
+        vertex = stack.pop()
+        if vertex not in visited:
+            visited.add(vertex)
+            stack.extend(self.[vertex] - visited)
+    return visited
 
   def breadth_first_for_each(self, cb):
-    pass
+    visited, queue = set(), [cb]
+    while queue:
+        vertex = queue.pop(0)
+        if vertex not in visited:
+            visited.add(vertex)
+            queue.extend(self.[vertex] - visited)
+    return visited
 
   def insert(self, value):
     new_tree = BinarySearchTree(value)

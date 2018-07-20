@@ -1,5 +1,27 @@
 def heapsort(arr):
-  pass
+  length = len(aList) - 1
+  leastParent = length / 2
+  for i in range (leastParent, -1, -1):
+    moveDown(aList, i, length)
+
+  for i in range (length, 0, -1):
+    if aList[0] > aList[i]:
+      swap(aList, 0, i)
+      moveDown(aList, 0, i - 1)
+
+def moveDown(aList, first, last):
+  largest = 2 * first + 1
+  while largest <= last:
+
+    if (largest < last) and (aList[largest] < aList[largest + 1] ):
+      largest += 1
+
+    if aList[largest] > aList[first]:
+      swap(aList, largest, first)
+      first = largest;
+      largest = 2 * first + 1
+    else:
+      return
 
 class Heap:
   def __init__(self):
@@ -17,7 +39,7 @@ class Heap:
     self.size -= 1
     self.storage.pop()
     self._sift_down(1)
-    return retval 
+    return retval
 
   def get_max(self):
     return self.storage[1]
